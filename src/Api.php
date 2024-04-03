@@ -36,6 +36,7 @@ class Api
     use Commands;
     use CommandsHandler;
     use EditMessage;
+    use Forum;
     use Game;
     use Get;
     use HasContainer;
@@ -51,7 +52,6 @@ class Api
     use Query;
     use Stickers;
     use Update;
-    use Forum;
 
     /** @var string Version number of the Telegram Bot PHP SDK. */
     public const VERSION = '3.12.0';
