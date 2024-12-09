@@ -300,7 +300,7 @@ it('can set a webhook with its own certificate successfully', function () {
 });
 
 test('check the webhook works and can dispatch an event', function () {
-    $listener = new ListenerSpy();
+    $listener = new ListenerSpy;
 
     $api = api($this->httpClient);
     $api->on(UpdateWasReceived::class, $listener);
@@ -314,7 +314,7 @@ test('check the webhook works and can dispatch an event', function () {
 });
 
 it('dispatches 3 events of update event type', function () {
-    $listener = new ListenerSpy();
+    $listener = new ListenerSpy;
 
     $api = api($this->httpClient);
     $api->on('update', $listener);

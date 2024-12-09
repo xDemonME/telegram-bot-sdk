@@ -10,7 +10,7 @@ use Telegram\Bot\Tests\Traits\CommandGenerator;
 uses(ProphecyTrait::class, CommandGenerator::class);
 
 beforeEach(function () {
-    $this->bus = new CommandBus();
+    $this->bus = new CommandBus;
 });
 
 it('can add a command to the bus', function () {
@@ -138,9 +138,7 @@ it('throws an exception if parsing for a command in a message with no text')
     ->throws(InvalidArgumentException::class);
 
 it('throws an exception if command is not an instance of command interface', function () {
-    $class = new class()
-    {
-    };
+    $class = new class {};
 
     $this->bus->addCommand($class::class);
 })

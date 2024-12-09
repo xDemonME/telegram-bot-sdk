@@ -18,8 +18,7 @@ final class Entities
      */
     public function __construct(
         private string $text
-    ) {
-    }
+    ) {}
 
     public static function format(string $text): self
     {
