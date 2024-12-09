@@ -101,4 +101,61 @@ trait Payments
     {
         return $this->post('answerPreCheckoutQuery', $params)->getResult();
     }
+
+    /**
+     * Create a link for an invoice
+     *
+     * Returns the created invoice link as String on success
+     *
+     * @link https://core.telegram.org/bots/api#createinvoicelink
+     *
+     * @param array{
+     * 	title: string,
+     * 	description: string,
+     * 	payload: string,
+     * 	provider_token: string,
+     * 	currency: string,
+     * 	prices: LabeledPrice[],
+     *  subscription_period: int,
+     * 	max_tip_amount: int,
+     * 	suggested_tip_amounts: int[],
+     * 	provider_data: string,
+     * 	photo_url: string,
+     * 	photo_size: int,
+     * 	photo_width: int,
+     * 	photo_height: int,
+     * 	need_name: bool,
+     * 	need_phone_number: bool,
+     * 	need_email: bool,
+     * 	need_shipping_address: bool,
+     * 	send_phone_number_to_provider: bool,
+     * 	send_email_to_provider: bool,
+     * 	is_flexible: bool,
+     * } $params
+     */
+    public function createInvoiceLink(array $params): string
+    {
+        $params['prices'] = is_array($params['prices']) ? $params['prices'] : [$params['prices']];
+        $params['prices'] = json_encode($params['prices'], JSON_THROW_ON_ERROR);
+
+        return $this->post('createInvoiceLink', $params)->getResult();
+    }
+
+    /**
+     * Allows the bot to cancel or re-enable extension of a subscription paid in Telegram Stars.
+     *
+     * Returns True on success.
+     *
+     * @link https://core.telegram.org/bots/api#edituserstarsubscription
+     *
+     * @param array{
+     * 	user_id: int,
+     * 	telegram_payment_charge_id: string,
+     * 	is_canceled: bool,
+     * } $params
+     */
+    public function editUserStarSubscription(array $params): string
+    {
+        return $this->post('editUserStarSubscription', $params)->getResult();
+    }
 }
