@@ -146,7 +146,7 @@ trait Payments
      *
      * Returns True on success.
      *
-     * @link https://core.telegram.org/bots/api#edituserstarsubscription
+     * @link https://core.telegram.org/bots/api#edituserstarsubscriptioon
      *
      * @param array{
      * 	user_id: int,
@@ -154,7 +154,7 @@ trait Payments
      * 	is_canceled: bool,
      * } $params
      */
-    public function editUserStarSubscription(array $params): string
+    public function editUserStarSubscription(array $params): bool
     {
         return $this->post('editUserStarSubscription', $params)->getResult();
     }
