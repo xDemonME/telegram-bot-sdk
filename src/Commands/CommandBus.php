@@ -189,7 +189,6 @@ class CommandBus extends AnswerBus
     {
         $command = $this->commands[$name]
             ?? $this->commandAliases[$name]
-            ?? $this->commands['help']
             ?? collect($this->commands)->first(fn ($command): bool => $command instanceof $name);
 
         return $command?->make($this->telegram, $update, $entity) ?? false;
